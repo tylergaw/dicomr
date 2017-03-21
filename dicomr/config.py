@@ -15,7 +15,7 @@ class Config(object):
     AWS_S3_BUCKET = os.environ["AWS_S3_BUCKET"]
     UPLOAD_FOLDER = "https://s3.amazonaws.com/{}".format(
         os.environ["AWS_S3_BUCKET"])
-    USE_S3 = False
+    USE_S3 = True
 
 
 class Prod(Config):
@@ -27,7 +27,6 @@ class Local(Config):
     TEMPLATES_AUTO_RELOAD = True
     LOCAL = True
     DEBUG = True
-    USE_S3 = True
 
 
 class Test(Config):

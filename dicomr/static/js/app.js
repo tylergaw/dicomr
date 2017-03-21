@@ -24,9 +24,9 @@ $(function() {
         form.parent().removeClass('is-uploading');
       },
       success: function(res) {
+        form.parent().addClass('is-success');
         // TODO: This can be smoother later.
-        console.log(res);
-        // window.location = '/records/' + res.result.id;
+        window.location.reload();
       },
       error: function(err) {
         form.parent().addClass('is-error');
@@ -60,4 +60,11 @@ $(function() {
   }
 
   initDragon();
+
+  // NOTE: This is way dumb, but reverse chron sort because I need to update
+  // the column type time get a timestamp.
+  var ul = $('.record-list');
+  ul.children().each(function(i, li) {
+    ul.prepend(li);
+  });
 });

@@ -1,10 +1,9 @@
 {% macro dicom_data_list(data) -%}
-<ul>
+<ul class="dataset-list">
   {% for element in data %}
   <li>
-    <h4>{{ element.tag }}</h4>
-    <h3>{{ element.tagName }}</h3>
-    <p>
+    <h4>{{ element.tag }} {{ element.tagName }}</h4>
+    <p class="dataset-vr">
       {{ element.vr }} - {{ element.vrDefinition }}
     </p>
     <p>

@@ -160,3 +160,19 @@ def save_images(filename, img):
         thumb.save(os.path.join(upload_path, thumb_name), "PNG")
 
     return new_filename
+
+
+def where(key):
+    """
+    HOF. Create lookup functions for finding a dict in a list by the given
+    value of a key.
+
+    :usage: where_foo = where("foo")
+            where_foo(my_dict, "bar")
+
+            You can also use it without creating the var:
+            where("foo")(my_dict, "bar")
+    """
+    def f(d, val):
+        return next((i for i in d if i[key] == val), None)
+    return f

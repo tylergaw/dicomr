@@ -9,6 +9,10 @@
         Drag and drop DICOM images here.
         <br><small>or <label for="upload-input">browse</label> to upload.</small>
 
+        <p class="success-msg">
+          ✔︎ Uploaded complete
+        </p>
+
         <p class="error-msg">
           There was an error uploading the files. Please try again.
         </p>
@@ -26,19 +30,28 @@
 
   {% if records %}
   <h4>Records</h4>
-  <ul>
+  <ul class="record-list">
     {% for record in records %}
-    <li>
+    <li class="record-list-item">
       <a href="{{ url_for('records_app.record', record_id=record.id) }}">
-        {{ record.dicom_name }}
-
-        {% if record.image_name %}
-        <img src="{{ upload_path }}/{{ record_image_thumb(record.image_name) }}">
-        {% else %}
-        <div class="no-image">
-          Image unavailable
+        <div class="record-thumb">
+          {% if record.image_name %}
+          <img src="{{ upload_path }}/{{ record_image_thumb(record.image_name) }}">
+          {% endif %}
         </div>
-        {% endif %}
+
+        <div class="record-details">
+          <h3>
+            Study Instance UID: {{ record.study_uid }}
+          </h3>
+
+          <div class="record-list-item-meta">
+            <p><b>Manufacturer</b> {{ record.manufacturer.value }}</p>
+            <p><b>Modality</b> {{ record.modality.value }}</p>
+            <p><b>Uploaded</b> {{ record.created_at }}</p>
+            <p><b>Filename</b> {{ record.dicom_name }}</p>
+          </div>
+        </div>
       </a>
     </li>
     {% endfor %}

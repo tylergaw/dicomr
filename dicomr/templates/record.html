@@ -13,6 +13,7 @@
   {% endif %}
 
   {% if dicom_data %}
+    <h4>Dataset <a class="heading-link" href="?json=1" target="_blank">View as JSON</a></h4>
     {{ dicom_data_list(dicom_data) }}
   {% endif %}
 {% endblock %}

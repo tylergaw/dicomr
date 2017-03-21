@@ -7,6 +7,10 @@ body {
   font-family: 'Chivo', sans-serif;
 }
 
+main {
+  padding-bottom: 3rem;
+}
+
 b,
 strong {
   font-weight: 700;
@@ -158,8 +162,26 @@ main {
   width: 100%;
 }
 
+.success-msg {
+  align-items: center;
+  background-color: #29bc00;
+  color: #fff;
+  display: none;
+  height: 100%;
+  left: 0;
+  justify-content: center;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .is-error .error-msg {
   display: block;
+}
+
+.is-success .success-msg {
+  display: flex;
 }
 
 .is-dragover .upload-dropzone {
@@ -208,4 +230,110 @@ main {
 
 .error-page-contents {
   text-align: center;
+}
+
+.record-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.record-list-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  display: block;
+  font-size: 0.9rem;
+}
+
+.record-list-item a {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.record-list-item a:hover,
+.record-list-item a:focus {
+  background-color: rgba(5, 121, 202, 0.1);
+}
+
+.record-thumb {
+  background-color: #ccc;
+  height: 68px;
+  flex: 0 0 68px;
+  overflow: hidden;
+  max-width: 68px;
+}
+
+.record-thumb img {
+  display: block;
+  width: 100%;
+}
+
+.record-details {
+  box-sizing: border-box;
+  flex: 1 1 80%;
+  margin-left: 8px;
+}
+
+.record-details h3 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0 0 6px 0;
+  padding: 0 8px;
+}
+
+.record-list-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.record-list-item-meta p {
+  color: #303229;
+  font-size: 0.8rem;
+  margin: 0 16px 0 0;
+  padding: 8px;
+}
+
+.record-list-item-meta b {
+  display: block;
+}
+
+.dataset-list {
+  font-size: 0.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dataset-list li {
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.dataset-list li h4 {
+  width: 25%;
+}
+
+.dataset-list li h4,
+.dataset-list li p {
+  box-sizing: border-box;
+  margin-right: 16px;
+}
+
+.dataset-list li p {
+  max-height: 5rem;
+  overflow: hidden;
+}
+
+.dataset-vr {
+  width: 15%;
+}
+
+.heading-link {
+  font-size: 0.8rem;
+  font-weight: 400;
 }

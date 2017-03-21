@@ -11,6 +11,7 @@ from flask import (
 )
 from .utils import process_upload
 from .models import Record
+from dicomr.common.utils import where
 
 records_app = Blueprint('records_app', __name__)
 
@@ -37,16 +38,26 @@ def page_not_found(err):
 
 @records_app.route("/")
 def index():
-    records = Record.query.all()
-    return render_template("index.html", records=records)
+    records = Record.query.order_by(Record.created_at.desc()).all()
+
+    records_for_view = []
+    where_tag = where("tag")
+    for record in records:
+        # Creates a clone of the Record dict.
+        r = dict(record.__dict__)
+        r_json = json.loads(r["dicom_data"])
+
+        r["manufacturer"] = where_tag(r_json, "(0008, 0070)")
+        r["modality"] = where_tag(r_json, "(0008, 0060)")
+        r["slice_thickness"] = where_tag(r_json, "(0018, 0050)")
+        records_for_view.append(r)
+
+    return render_template("index.html", records=records_for_view)
 
 
 @records_app.route("/records/<int:record_id>")
 def record(record_id):
-    record = Record.query.get(record_id)
-
-    if not record:
-        abort(404)
+    record = Record.query.filter_by(id=record_id).first_or_404()
 
     # Display the dicom metadata as JSON. Mostly for dev purposes.
     # e.g; /records/60?json=1

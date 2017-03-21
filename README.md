@@ -1,5 +1,7 @@
 # Dicomr
 
+[https://dicomr.herokuapp.com/](https://dicomr.herokuapp.com/)
+
 A web application for uploading and viewing DICOM images.
 
 ## Local setup
@@ -53,6 +55,8 @@ pip install .
 ```
 
 #### A note on local file uploads
+
+[🙃 THIS IS CURRENTLY NOT TRUE. I BROKE THIS AND JUST STARTED USING A NON-PROD S3 BUCKET FOR LOCAL UPLOADS 🙃]
 
 During local development we don't want to upload files to S3. Instead we just
 save them to a local directory that is ignored. Because it's ignored you'll
