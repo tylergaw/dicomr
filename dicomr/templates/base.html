@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dicomr</title>
+
+    <script>
+      var htmlClasses = document.getElementsByTagName('html')[0].classList;
+      htmlClasses.remove('no-js');
+      htmlClasses.add('js-available');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Chivo:400,700" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
+  </head>
+  <body>
+
+    <header role="banner">
+      <a href="/"><h2 class="banner-title">Dicom<span>r</span></h2></a>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "macros.html" import dicom_data_list %}
+
+{% block content %}
+  <h4>{{ dicom_name }}</h4>
+
+  {% if img_name %}
+  <img src="{{ upload_path }}/{{ img_name }}">
+  {% else %}
+  <div class="no-image">
+    Image unavailable
+  </div>
+  {% endif %}
+
+  {% if dicom_data %}
+    {{ dicom_data_list(dicom_data) }}
+  {% endif %}
+{% endblock %}

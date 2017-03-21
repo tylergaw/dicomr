@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% from "macros.html" import dicom_data_list, upload_icon, working_icon %}
+
+{% block content %}
+  <div class="home-upload">
+    <form class="upload-form" action="{{ url_for('records_app.upload') }}" method="post" enctype="multipart/form-data">
+      <div class="needs-js upload-dropzone">
+        <span class="dropzone-icon">{{ upload_icon() }}</span>
+        Drag and drop DICOM images here.
+        <br><small>or <label for="upload-input">browse</label> to upload.</small>
+
+        <p class="error-msg">
+          There was an error uploading the files. Please try again.
+        </p>
+      </div>
+      <input type="file" name="files" id="upload-input" class="upload-input" multiple>
+      <button type="submit" class="btn btn-upload btn-hidden">Upload</button>
+    </form>
+    <div class="upload-working">
+      <p>
+        <span class="working-icon">{{ working_icon() }}</span>
+        Uploading...
+      </p>
+    </div>
+  </div>
+
+  {% if records %}
+  <h4>Records</h4>
+  <ul>
+    {% for record in records %}
+    <li>
+      <a href="{{ url_for('records_app.record', record_id=record.id) }}">
+        {{ record.dicom_name }}
+
+        {% if record.image_name %}
+        <img src="{{ upload_path }}/{{ record_image_thumb(record.image_name) }}">
+        {% else %}
+        <div class="no-image">
+          Image unavailable
+        </div>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+{% endblock %}
