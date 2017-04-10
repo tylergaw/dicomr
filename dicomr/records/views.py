@@ -38,7 +38,7 @@ def page_not_found(err):
 
 @records_app.route("/")
 def index():
-    records = Record.query.order_by(Record.created_at.desc()).all()
+    records = Record.query.order_by(Record.created_at.asc()).all()
 
     records_for_view = []
     where_tag = where("tag")
