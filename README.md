@@ -1,5 +1,7 @@
 # Dicomr
 
+## NOTE: This project was a POC, not intended for real use. It might be helpful as Flask examples.
+
 [https://dicomr.herokuapp.com/](https://dicomr.herokuapp.com/)
 
 A web application for uploading and viewing DICOM images.
@@ -63,7 +65,7 @@ save them to a local directory that is ignored. Because it's ignored you'll
 need to create it.
 
 ```
-mdir dicomr/static/uploads/tmp
+mkdir dicomr/static/uploads/tmp
 ```
 
 ### Run migrations
@@ -79,7 +81,7 @@ flask db upgrade
 flask run
 ```
 
-Dicomr will be available at [http://localhost:5000](http://localhost:5000).
+Dicomr is available at [http://localhost:5000](http://localhost:5000).
 
 ## Misc developer info
 
