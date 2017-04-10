@@ -97,9 +97,9 @@ def list_from_dataset(ds):
 
 def image_from_dataset(dataset):
     """
-    Create an image from a DICOM file using Pillow.
+    Create an image from a pydicom dataset using Pillow.
 
-    :param file: A DICOM file
+    :param dataset: A pydicom dataset
     """
 
     if ("PixelData" not in dataset):
